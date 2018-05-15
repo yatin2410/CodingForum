@@ -6,6 +6,7 @@
     <Name>Learn</Name>
     <RootNamespace>Learn</RootNamespace>
     <LastActiveSolutionConfig>Debug|Any CPU</LastActiveSolutionConfig>
+    <NameOfLastUsedPublishProfile>CodingForum - Web Deploy</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -31,22 +32,37 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.js" />
+    <Compile Include="models\user.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="public\javascripts\bootstrap.js" />
     <Compile Include="routes\index.js" />
     <Compile Include="routes\users.js" />
+    <None Include="CodingForum - Web Deploy.pubxml" />
     <Content Include="package.json" />
+    <Content Include="public\stylesheets\bootstrap.css" />
     <Content Include="public\stylesheets\main.css" />
     <Content Include="README.md" />
-    <Content Include="views\index.pug" />
-    <Content Include="views\layout.pug" />
-    <Content Include="views\error.pug" />
+    <Content Include="views\index.handlebars" />
+    <Content Include="views\layouts\layout.handlebars">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="views\login.handlebars">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="views\register.handlebars">
+      <SubType>Code</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="models\" />
     <Folder Include="public\" />
     <Folder Include="public\images\" />
     <Folder Include="public\javascripts\" />
     <Folder Include="public\stylesheets\" />
     <Folder Include="routes\" />
     <Folder Include="views\" />
+    <Folder Include="views\layouts\" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
