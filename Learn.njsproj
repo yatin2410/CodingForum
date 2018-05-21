@@ -36,6 +36,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="public\javascripts\bootstrap.js" />
+    <Compile Include="public\javascripts\stray.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="routes\index.js" />
     <Compile Include="routes\users.js" />
     <None Include="CodingForum - Web Deploy.pubxml" />
@@ -43,6 +46,9 @@
     <Content Include="public\stylesheets\bootstrap.css" />
     <Content Include="public\stylesheets\main.css" />
     <Content Include="README.md" />
+    <Content Include="views\forgetpass.handlebars">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="views\index.handlebars" />
     <Content Include="views\layouts\layout.handlebars">
       <SubType>Code</SubType>

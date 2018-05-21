@@ -1,2 +1,16 @@
-﻿<h1 class="page-header">DeshBoard</h1>
-<p>Welcome to your deshboard</p>
+﻿<div>
+    <h2>Welcome {{{user.name}}}, </h2>
+    <br />
+
+    <p class="lead text-muted"><b>Paste Your code below in whom you want to remove extra elements like white spaces or stray elements.</b></p>
+
+<pre class="form-control">
+<code id="code" contenteditable="true" spellcheck="false"> #include &lt;stdio.h&gt;  int main() {     printf("Hello World"); }   </code> </pre>
+
+<h5>Or</h5>
+
+<p class="lead text-muted"><b>Upload your code:</b> <input type="file"/></p>
+
+    <button class="btn btn-primary my-3" onclick="showstray();">     Show stray elements </button>
+    <button class="btn btn-primary my-3" onclick="removestray();">     Remove stray elements </button>  
+</div>

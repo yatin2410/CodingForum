@@ -14,6 +14,11 @@ router.get('/login', ensureAuth, function (req, res) {
     res.render('login');
 });
 
+router.get('/forgetpass', ensureAuth, function (req, res) {
+    res.render('forgetpass');
+});
+
+
 function ensureAuth(req, res, next) {
     if (!req.isAuthenticated()) {
         return next();
@@ -156,6 +161,48 @@ function ensureAuthLogout(req, res, next) {
         res.redirect('/users/login')
     }
 }
+
+
+router.post('/forgetpass', function (req, res) {
+    var email = req.body.email;
+
+    req.checkBody('email', 'Valid Email is required').isEmail();
+
+    var errors = req.validationErrors();
+
+    if (errors) {
+        res.render('forgetpass', {
+            errors: errors
+        });
+    }
+
+    else {
+
+        User.find({ email: email }, function (err, docs) {
+            if (docs.length) {
+
+                console.log(docs);
+
+                //TODO: add code for sent email for change password
+
+                var messg = 'Password Change link is sent to Your Email';
+                res.render('login', {
+                    messg: messg
+                });
+
+            }
+
+            else {
+                var err = "Email is not found please register first!!";
+                res.render('register', {
+                    err: err
+                });
+            }
+        });
+    }
+
+});
+
 
 
 module.exports = router;

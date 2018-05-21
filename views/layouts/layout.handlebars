@@ -2,19 +2,25 @@
 <html>
 <head>
     <title>
-        LOGIN APP
+        CodingForum
     </title>
     <link rel="stylesheet" href="/stylesheets/main.css" />
-    <link rel="stylesheet" href="/stylesheets/bootstrap.css" />
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css" /> 
+    <script type="text/javascript" src="/javascripts/stray.js"></script>
 </head>
 <body>
     <div class="container">
-        <header class="header clearfix">
+        
+    
+      <header class="header clearfix">
             <nav>
                 <ul class="nav nav-pills float-right">
                     {{#if user}}
                     <li class="nav-item">
                         <a class="nav-link" href="/">Deshboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/discuss">Discussion Board</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/users/logout">LogOut</a>
@@ -30,29 +36,56 @@
 
                 </ul>
             </nav>
-            <h3 class="text-muted">LOGIN APP</h3>
+            <h3 class="text-muted">Coding Forum</h3>
         </header>
 
+      <div class="row marketing">
+          <div class="col-lg-6">
+              {{#if success_msg}}
+              <div class="alert alert-success">{{success_msg}}</div>
+              {{/if}}
 
-            <div class="row marketing">
-                <div class="col-lg-6">
-                    {{#if success_msg}}
-                    <div class="alert alert-success">{{success_msg}}</div>
-                    {{/if}}
+              {{#if error_msg}}
+              <div class="alert alert-success">{{error_msg}}</div>
+              {{/if}}
 
-                    {{#if error_msg}}
-                    <div class="alert alert-success">{{error_msg}}</div>
-                    {{/if}}
-
-                    {{#if error}}
-                    <div class="alert alert-success">{{error}}</div>
-                    {{/if}}
+              {{#if error}}
+              <div class="alert alert-success">{{error}}</div>
+              {{/if}}
 
 
-                    {{{body}}}
-                </div>
+              {{{body}}}
+          </div>
 
-            </div>
+          <div class="col-lg-4" style="margin-left:150px;">
+              {{#if user}}
+              <form method="post" enctype="multipart/form-data">
+                  <p class="lead text-muted"><b>Your saved files:</b></p>
+                  <hr />
+                  <div class="container">
+                      <div class="row">
+                          <div class="col-xs-6">
+                              {{#each user.filenames}}
+                              <a class="list-group-item list-group-item-action" style="text-align:center;font-size:22px">{{{this}}}</a>
+                              {{/each}}
+                          </div>
+                          <div class="col-xs-6">
+                              {{#each user.savefiles}}
+                              <a class="list-group-item" style="text-align:center;font-size:22px" href="/code/{{{this}}}">Link</a>
+                              {{/each}}
+                          </div>
+                      </div>
+                  </div>
+                  <hr />
+                  <p class="lead text-muted"><b>Save your code:</b></p>
+                  <input class="lead" name="file" type="file" />
+                  <button type="submit" name="mysave" id="save" class="btn btn-success" style="margin-top:5px;">Save</button>
+              </form>
+
+              {{/if}}
+          </div>
+
+      </div>
 
     
         <footer class="footer">

@@ -19,7 +19,15 @@ var UserSchema = mongoose.Schema({
 
     name: {
         type: String
-    }
+    },
+
+    savefiles: [{
+        type: String
+    }],
+
+    filenames: [{
+        type: String
+    }]
 
 });
 

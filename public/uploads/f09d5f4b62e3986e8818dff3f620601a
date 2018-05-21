@@ -1,0 +1,30 @@
+import os
+import bs4
+import time
+
+from urllib.request import Request, urlopen
+from bs4 import BeautifulSoup as soup
+
+import urllib
+
+
+main_url = 'http://www.sscias.com/p/times-of-india-epaper.html'
+
+try:
+    req = Request(main_url,headers={'User-Agent': 'Mozilla/5.0'})
+    page_html = urlopen(req).read()
+    page_soup = soup(page_html,'html.parser')
+    containersbtn = page_soup.find('button',{'class':'button_next'})
+    lnk = containersbtn.parent.get('href')
+    print(lnk)
+    req = Request(lnk,headers={'User-Agent': 'Mozilla/5.0'})
+    page_html = urlopen(req).read()
+    page_soup = soup(page_html,'html.parser')
+    container = page_soup.find('div',{'class':'bars'})
+    dlnk = container.a.get('href')
+    response = urllib.request.urlopen(dlnk)
+    fl = open('toi.pdf','wb')
+    fl.write(response.read())
+    fl.close()
+except:
+    os.system('python senderr.py toi 2>>dump')
